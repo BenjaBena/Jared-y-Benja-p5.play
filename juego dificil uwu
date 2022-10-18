@@ -1,0 +1,37 @@
+//hardest world game uwu
+let player, floor, paredIzq, paredDer, paredArr;
+let obst, obst2, obst3;
+
+function setup() {
+	createCanvas(600, 600);
+	player = new Sprite(50, 550);
+	player.diameter = 40;
+    player.color = 'black'
+    floor = new Sprite(400, 600, 800, 40)
+    floor.collider = 'static'
+    floor.color = 'white'
+	paredIzq = new Sprite(0, 300, 40, 600);
+    paredIzq.collider = 'static'
+    paredIzq.color = 'white'
+	paredDer = new Sprite(600, 300, 40, 600);
+    paredDer.collider = 'static'
+    paredDer.color = 'white'
+	paredArr = new Sprite(300, 0, 600, 40);
+    paredArr.collider = 'static'
+    paredArr.color = 'white'
+    obst = new Sprite(150, 480, 8, 200);
+    obst.collider = 'static'
+    obst2 = new Sprite(246, 375, 200, 8);
+    obst2.collider = 'static'
+    obst3 = new Sprite()
+}
+function draw() {
+	background(	255, 159, 137);
+  
+ 
+}
+ window.addEventListener('devicemotion', function(e) {
+  x = parseInt(e.accelerationIncludingGravity.x);
+  y = parseInt(e.accelerationIncludingGravity.y);
+  z = parseInt(e.accelerationIncludingGravity.z);
+});
