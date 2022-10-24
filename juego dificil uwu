@@ -1,12 +1,12 @@
 //hardest world game uwu
 let player, floor, paredIzq, paredDer, paredArr;
-let obst, obst2, obst3;
+let obst, obst2, coin;
 
 function setup() {
 	createCanvas(600, 600);
 	player = new Sprite(50, 550);
 	player.diameter = 40;
-    player.color = 'black'
+    player.color = 'red'
     floor = new Sprite(400, 600, 800, 40)
     floor.collider = 'static'
     floor.color = 'white'
@@ -23,7 +23,9 @@ function setup() {
     obst.collider = 'static'
     obst2 = new Sprite(246, 375, 200, 8);
     obst2.collider = 'static'
-    obst3 = new Sprite()
+    coin = new Sprite()
+    coin.diameter = 20
+    coin.color = '#DDDD1B'
 }
 function draw() {
 	background(	255, 159, 137);
