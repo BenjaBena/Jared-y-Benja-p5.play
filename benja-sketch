@@ -1,52 +1,64 @@
 //hardest world game uwu
 let player, floor, paredIzq, paredDer, paredArr;
-let obst, obst2, obst3, obst4, obst5, obst6, coin, coin2, area;
+let obst, obst2, coin, coin2, area;
 
 function setup() {
 	createCanvas(600, 600);
-	area = new Sprite(50, 550, 80, 80)
+	area = new Sprite(50, 550, 80, 80);
     area.color = '#8AFF88'
     player = new Sprite(51, 550, 20, 20);
-    player.color = 'red'
-    player.overlaps(area)
-    floor = new Sprite(400, 600, 800, 20)
-    floor.collider = 'static'
-    floor.color = 'white'
+    player.color = 'red';
+    player.overlaps(area);
+    floor = new Sprite(400, 600, 800, 20);
+    floor.collider = 'static';
+    floor.color = 'white';
 	paredIzq = new Sprite(0, 300, 20, 600);
-    paredIzq.collider = 'static'
-    paredIzq.color = 'white'
+    paredIzq.collider = 'static';
+    paredIzq.color = 'white';
 	paredDer = new Sprite(600, 300, 20, 600);
-    paredDer.collider = 'static'
-    paredDer.color = 'white'
+    paredDer.collider = 'static';
+    paredDer.color = 'white';
 	paredArr = new Sprite(300, 0, 600, 20);
-    paredArr.collider = 'static'
-    paredArr.color = 'white'
+    paredArr.collider = 'static';
+    paredArr.color = 'white';
     obst = new Sprite(140, 60, 8, 200);
-    obst.diameter = 20
-    obst.color = '#26f0CB'
-    obst.velocity.y = 1
+    obst.diameter = 20;
+    obst.color = '#26f0CB';
+    obst.velocity.y = 1;
     obst2 = new Sprite(220, 60, 200, 8);
-    obst2.diameter = 20
-    obst2.color = '#26f0cb'
-    obst2.velocity.y = 1
-    obst3 = new Sprite(246, 275, 100, 4);
-    obst3.diameter = 20
-    obst3.color = '#26f0cb'
-    obst4 = new Sprite(230, 250, 200, 8)
-    obst4.diameter = 20
-    obst4.color = '#26f0cb'
-    obst5 = new Sprite(210, 220, 200, 8)
-    obst5.diameter = 20
-    obst5.color = '#26f0cb'
-    obst6 = new Sprite(170, 170, 200, 8)
-    obst6.diameter = 20
-    coin = new Sprite(180, 0)
-    strokeWeight(4)
-    coin.diameter = 20
-    coin.color = 'gold'
-    coin2 = new Sprite(570, 570)
-    coin2.diameter = 20
-    coin2.color = 'gold'
+    obst2.diameter = 20;
+    obst2.color = '#26f0cb';
+    obst2.velocity.y = 1;
+    obst3 = new Sprite(300, 60, 100, 4);
+    obst3.diameter = 20;
+    obst3.color = '#26f0cb';
+    obst3.velocity.y = 1;
+    obst4 = new Sprite(570, 250, 200, 8);
+    obst4.diameter = 20;
+    obst4.color = '#26f0cb';
+    obst4.velocity.x = -1;
+    obst4.overlaps(obst);
+    obst4.overlaps(obst2);
+    obst4.overlaps(obst3);
+    obst5 = new Sprite(570, 350, 200, 8);
+    obst5.diameter = 20;
+    obst5.color = '#26f0cb';
+    obst5.velocity.x = -1
+    obst5.overlaps(obst);
+    obst5.overlaps(obst2);
+    obst5.overlaps(obst3);
+    obst.overlaps(obst4);
+    obst6 = new Sprite(570, 140, 200, 8);
+    obst6.color = '#26f'
+    obst6.diameter = 20;
+    obst6.velocity.x = -1;
+    coin = new Sprite(180, 70);
+    strokeWeight(4);
+    coin.diameter = 20;
+    coin.color = 'gold';
+    coin2 = new Sprite(270, 300);
+    coin2.diameter = 20;
+    coin2.color = 'gold';
 }
 function draw() {
 	background('#AF9FF6');
@@ -62,10 +74,29 @@ function draw() {
   if(obst2.colliding(paredArr)){
     obst2.velocity.y = 1
   }
+  if(obst3.colliding(floor)){
+    obst3.velocity.y = -1
+  }
+  if(obst3.colliding(paredArr)){
+    obst3.velocity.y = 1
+  }
+  if(obst4.colliding(paredIzq)){
+    obst4.velocity.x = 1
+    
+  }
+  if(obst4.colliding(paredDer)){
+    obst4.velocity.x = -1
+    
+  }
+  if(obst5.colliding(paredIzq)){
+    obst5.velocity.x = 1
+  }
+  if(obst5.colliding(paredDer)){
+    obst5.velocity.x = -1
+  }
 }
  window.addEventListener('devicemotion', function(e) {
   x = parseInt(e.accelerationIncludingGravity.x);
   y = parseInt(e.accelerationIncludingGravity.y);
   z = parseInt(e.accelerationIncludingGravity.z);
 });
-
