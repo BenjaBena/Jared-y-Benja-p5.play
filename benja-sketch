@@ -1,4 +1,3 @@
-//hardest world game uwu
 let player, floor, paredIzq, paredDer, paredArr;
 let obst, obst2, coin, coin2, area;
 
@@ -49,7 +48,7 @@ function setup() {
     obst5.overlaps(obst3);
     obst.overlaps(obst4);
     obst6 = new Sprite(570, 140, 200, 8);
-    obst6.color = '#26f'
+    obst6.color = '#26f0cb'
     obst6.diameter = 20;
     obst6.velocity.x = -1;
     obst6.overlaps(obst);
@@ -105,7 +104,15 @@ function draw() {
   if(obst6.colliding(paredDer)){
     obst6.velocity.x = -1
   }
-  player.vel.x = -x;
+  if(player.overlaps(coin)) coin.remove();
+  if(player.overlaps(coin2)) coin2.remove();
+  if(player.colliding(obst)) player.remove();
+  if(player.colliding(obst2)) player.remove();
+  if(player.colliding(obst3)) player.remove();
+  if(player.colliding(obst4)) player.remove();
+  if(player.colliding(obst5)) player.remove();
+  if(player.colliding(obst6)) player.remove();
+    player.vel.x = -x;
   player.vel.y = y;
 }
  window.addEventListener('devicemotion', function(e) {
