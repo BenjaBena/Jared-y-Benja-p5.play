@@ -52,6 +52,11 @@ function setup() {
     obst6.color = '#26f'
     obst6.diameter = 20;
     obst6.velocity.x = -1;
+    obst6.overlaps(obst);
+    obst6.overlaps(obst2);
+    obst6.overlaps(obst3);
+    obst6.overlaps(obst4);
+    obst6.overlaps(obst5);
     coin = new Sprite(180, 70);
     strokeWeight(4);
     coin.diameter = 20;
@@ -94,6 +99,14 @@ function draw() {
   if(obst5.colliding(paredDer)){
     obst5.velocity.x = -1
   }
+  if(obst6.colliding(paredIzq)){
+    obst6.velocity.x = 1
+  }
+  if(obst6.colliding(paredDer)){
+    obst6.velocity.x = -1
+  }
+  player.vel.x = -x;
+  player.vel.y = y;
 }
  window.addEventListener('devicemotion', function(e) {
   x = parseInt(e.accelerationIncludingGravity.x);
