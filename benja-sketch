@@ -1,5 +1,6 @@
 let player, floor, paredIzq, paredDer, paredArr;
 let obst, obst2, coin, coin2, area;
+let x,y;
 
 function setup() {
 	createCanvas(600, 600);
@@ -106,14 +107,27 @@ function draw() {
   }
   if(player.overlaps(coin)) coin.remove();
   if(player.overlaps(coin2)) coin2.remove();
-  if(player.colliding(obst)) player.remove();
-  if(player.colliding(obst2)) player.remove();
-  if(player.colliding(obst3)) player.remove();
-  if(player.colliding(obst4)) player.remove();
-  if(player.colliding(obst5)) player.remove();
-  if(player.colliding(obst6)) player.remove();
-    player.vel.x = -x;
+  if(player.colliding(obst))
+    player.position.x = 51;
+    player.position.y = 550;
+  if(player.colliding(obst2))
+     player.position.x = 51;
+    player.position.y = 550;
+    if(player.colliding(obst3))
+     player.position.x = 51;
+    player.position.y = 550;
+    if(player.colliding(obst4))
+     player.position.x = 51;
+    player.position.y = 550;
+    if(player.colliding(obst5))
+    player.position.x = 51;
+    player.position.y = 550;
+  if(player.colliding(obst6))
+   player.position.x = 51;
+    player.position.y = 550;
+  player.vel.x = -x;
   player.vel.y = y;
+ 
 }
  window.addEventListener('devicemotion', function(e) {
   x = parseInt(e.accelerationIncludingGravity.x);
