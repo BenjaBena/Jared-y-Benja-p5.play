@@ -1,5 +1,5 @@
 let player, floor, paredIzq, paredDer, paredArr;
-let obst, obst2, coin, coin2, area;
+let obst, obst2, obst3, obst4, obst5, obst6, area;
 let x,y;
 
 function setup() {
@@ -57,16 +57,30 @@ function setup() {
     obst6.overlaps(obst3);
     obst6.overlaps(obst4);
     obst6.overlaps(obst5);
-    coin = new Sprite(180, 70);
-    strokeWeight(4);
-    coin.diameter = 20;
-    coin.color = 'gold';
-    coin2 = new Sprite(270, 300);
-    coin2.diameter = 20;
-    coin2.color = 'gold';
+    coins = new Group();
+    coins.diameter = 20;
+    coins.color = 'gold'
+    coins.overlaps(obst);
+    coins.overlaps(obst2);
+  coins.overlaps(obst3);
+  coins.overlaps(obst4);
+  coins.overlaps(obst5);
+  coins.overlaps(obst6);
+  coins.y = () => random(0, height);
+  coins.x = () => random(0, width);
+  coins.amount = 3;
+  player.overlaps(coins, collect);
+}
+
+function collect(player, coins){
+  coins.remove()
 }
 function draw() {
+    clear();
 	background('#AF9FF6');
+    if(player.colliding(coins)){
+      coins.remove();
+    }
     if(obst.colliding(floor)){
       obst.velocity.y = -1
     }
@@ -105,29 +119,44 @@ function draw() {
   if(obst6.colliding(paredDer)){
     obst6.velocity.x = -1
   }
-  if(player.overlaps(coin)) coin.remove();
-  if(player.overlaps(coin2)) coin2.remove();
-  if(player.colliding(obst))
+  if(player.colliding(obst)){
     player.position.x = 51;
     player.position.y = 550;
-  if(player.colliding(obst2))
+    coins.x = () => random(0, width);
+    coins.y = () => random(0, height);
+  }
+  if(player.colliding(obst2)){
      player.position.x = 51;
     player.position.y = 550;
-    if(player.colliding(obst3))
+       coins.x = () => random(0, width);
+    coins.y = () => random(0, height);
+  }
+    if(player.colliding(obst3)){
      player.position.x = 51;
     player.position.y = 550;
-    if(player.colliding(obst4))
+         coins.x = () => random(0, width);
+    coins.y = () => random(0, height);
+    }
+    if(player.colliding(obst4)){
      player.position.x = 51;
     player.position.y = 550;
-    if(player.colliding(obst5))
+         coins.x = () => random(0, width);
+    coins.y = () => random(0, height);
+    }
+    if(player.colliding(obst5)){
     player.position.x = 51;
     player.position.y = 550;
-  if(player.colliding(obst6))
+         coins.x = () => random(0, width);
+    coins.y = () => random(0, height);
+    }
+  if(player.colliding(obst6)){
    player.position.x = 51;
     player.position.y = 550;
+       coins.x = () => random(0, width);
+    coins.y = () => random(0, height);
+  } 
   player.vel.x = -x;
   player.vel.y = y;
- 
 }
  window.addEventListener('devicemotion', function(e) {
   x = parseInt(e.accelerationIncludingGravity.x);
