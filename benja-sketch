@@ -168,7 +168,7 @@ ________________________________________________________________________________
 //hardest game uwu
 
 let obst, obst2, coin, area, img, area2, x ,y;
-
+let o = 0;
 function setup() { 
   
       
@@ -217,12 +217,14 @@ function setup() {
     obst.diameter = 20
     obst.color = '#26f0CB'
     obst.velocity.y = 4
+    obst.velocity.x = 0;
   
     //obstaculo 2
     obst2 = new Sprite(246, 375, 200, 8);
     obst2.diameter = 20
     obst2.color = '#26f0CB'
     obst2.velocity.y = 4;
+    obst2.velocity.x = 0;
     
     
   
@@ -262,6 +264,15 @@ function draw() {
     
     coin.x = 400;
     coin.y = 400;
+    
+    obst.x = 150;
+    obst.y = 480;
+    obst2.x = 246;
+    obst2.y = 375;
+    obst.velocity.x = 0;
+    obst.velocity.y = -4;
+    obst2.velocity.x = 0;
+    obst2.velocity.y = -4;
   }
   
   if(player.colliding(obst2)) {
@@ -270,14 +281,27 @@ function draw() {
     
     coin.x = 400;
     coin.y = 400;
+    
+    obst.x = 150;
+    obst.y = 480;
+    obst2.x = 246;
+    obst2.y = 375;
+    obst.velocity.y = -4;
+    obst.velocity.x = 0;
+    obst2.velocity.y = -4;
+    obst2.velocity.x = 0;
   }
   if(player.colliding(coin)){
     coin.x = 700;
     coin.y = 700;
   }  
-  if(player.overlaps(area2) && coin.x == 700){
+  if(player.overlaps(area2) && coin.x === 700){
+    o = + 1;
+  }
+  
+  if( o == 1){
     textSize(32);
-    text('Level Complete'); 
+    text('Level Complete', 300, 300);
   }
   
   player.moveTowards(mouse.x, mouse.y);
